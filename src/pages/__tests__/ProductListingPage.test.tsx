@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
@@ -7,8 +7,7 @@ import ProductListingPage from '../ProductListingPage';
 import productsReducer from '@/store/slices/productsSlice';
 import filtersReducer from '@/store/slices/filtersSlice';
 import favoritesReducer from '@/store/slices/favoritesSlice';
-import { fetchProducts } from '@/store/slices/productsSlice';
-import { Product } from '@/types/product';
+import { Product, SortOption } from '@/types/product';
 
 const mockProducts: Product[] = [
   {
@@ -59,7 +58,7 @@ const createMockStore = (initialState = {}) => {
       filters: {
         searchQuery: '',
         category: 'all',
-        sortOption: 'none',
+        sortOption: 'none' as SortOption,
       },
       favorites: {
         items: [],
@@ -110,7 +109,7 @@ describe('ProductListingPage', () => {
       </Provider>
     );
 
-    expect(screen.getByText('Products')).toBeInTheDocument();
+    expect(screen.getByText('Discover Products')).toBeInTheDocument();
     expect(screen.getByText('Laptop')).toBeInTheDocument();
     expect(screen.getByText('T-Shirt')).toBeInTheDocument();
   });
@@ -131,7 +130,7 @@ describe('ProductListingPage', () => {
         filters: {
           searchQuery: 'nonexistent',
           category: 'all',
-          sortOption: 'none',
+          sortOption: 'none' as SortOption,
         },
         favorites: {
           items: [],

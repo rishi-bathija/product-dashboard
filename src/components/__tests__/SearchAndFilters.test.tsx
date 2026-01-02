@@ -8,6 +8,7 @@ import SearchAndFilters from '../SearchAndFilters';
 import productsReducer from '@/store/slices/productsSlice';
 import filtersReducer from '@/store/slices/filtersSlice';
 import favoritesReducer from '@/store/slices/favoritesSlice';
+import { SortOption } from '@/types/product';
 
 const createMockStore = () => {
   return configureStore({
@@ -44,7 +45,7 @@ const createMockStore = () => {
       filters: {
         searchQuery: '',
         category: 'all',
-        sortOption: 'none',
+        sortOption: 'none' as SortOption,
       },
       favorites: {
         items: [],

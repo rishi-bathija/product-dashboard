@@ -8,7 +8,7 @@ import App from '../App';
 import productsReducer from '@/store/slices/productsSlice';
 import filtersReducer from '@/store/slices/filtersSlice';
 import favoritesReducer from '@/store/slices/favoritesSlice';
-import { Product } from '@/types/product';
+import { Product, SortOption } from '@/types/product';
 
 const mockProducts: Product[] = [
   {
@@ -56,7 +56,7 @@ const createMockStore = () => {
       filters: {
         searchQuery: '',
         category: 'all',
-        sortOption: 'none',
+        sortOption: 'none' as SortOption,
       },
       favorites: {
         items: [],
@@ -240,7 +240,7 @@ describe('Integration Tests', () => {
           filters: {
             searchQuery: '',
             category: 'all',
-            sortOption: 'none',
+            sortOption: 'none' as SortOption,
           },
           favorites: {
             items: [mockProducts[0]],

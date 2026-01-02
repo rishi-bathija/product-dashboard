@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { Product, SortOption } from '@/types/product';
+import { Product } from '@/types/product';
 
 const selectAllProducts = (state: RootState) => state.products.items;
 const selectSearchQuery = (state: RootState) => state.filters.searchQuery;

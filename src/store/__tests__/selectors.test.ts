@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { selectFilteredProducts, selectCategories, selectIsFavorite } from '../selectors';
 import { RootState } from '../store';
-import { Product } from '@/types/product';
+import { Product, SortOption } from '@/types/product';
 
 const mockProducts: Product[] = [
   {
@@ -43,7 +43,7 @@ describe('selectors', () => {
     filters: {
       searchQuery: '',
       category: 'all',
-      sortOption: 'none',
+      sortOption: 'none' as SortOption,
     },
     favorites: {
       items: [],
@@ -86,7 +86,7 @@ describe('selectors', () => {
       ...mockState,
       filters: {
         ...mockState.filters,
-        sortOption: 'price-asc',
+        sortOption: 'price-asc' as SortOption,
       },
     };
     const result = selectFilteredProducts(stateWithSort);
@@ -99,7 +99,7 @@ describe('selectors', () => {
       ...mockState,
       filters: {
         ...mockState.filters,
-        sortOption: 'price-desc',
+        sortOption: 'price-desc' as SortOption,
       },
     };
     const result = selectFilteredProducts(stateWithSort);
